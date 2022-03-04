@@ -43,6 +43,14 @@ let deleteEventListener=()=>{
                 createNotesInHTML();
             });
         }
+
+/*Delete a Note by Index.*/
+let deleteNote = (index) => {
+    let localNotes = localStorage.getItem('notes');
+    localNotes = JSON.parse(localNotes);
+    localNotes = localNotes.filter(note => note != localNotes[index]);
+    localStorage.setItem('notes', JSON.stringify(localNotes));
+    createNotesInHTML();
 };
 
 
