@@ -62,3 +62,4 @@ document.getElementById('addBtn').addEventListener('click', () => {
     newNote.value = "";
     createNotesInHTML();
 });
+createNotesInHTML();
