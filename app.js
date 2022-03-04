@@ -26,8 +26,25 @@ let createNotesInHTML = () => {
         appendingDiv.innerHTML = notes;
 
         /*Call Delete Event Listener*/
+        deleteEventListener();
     }
 };
+
+/*Event Listener for deleting existing Note*/
+let deleteEventListener=()=>{
+    var totalNotes = document.querySelectorAll(".delete").length;
+        for (var i = 0; i < totalNotes; i++) {
+            document.querySelectorAll(".delete")[i].addEventListener("click", (event) => {
+                let deleteNoteIndex=event.target.parentElement.id;
+                let localNotes = localStorage.getItem('notes');
+                localNotes=JSON.parse(localNotes);
+                localNotes=localNotes.filter(note => note!=localNotes[deleteNoteIndex]);
+                localStorage.setItem('notes', JSON.stringify(localNotes));
+                createNotesInHTML();
+            });
+        }
+};
+
 
 /*Event Listener for Adding a new Note */
 document.getElementById('addBtn').addEventListener('click', () => {
